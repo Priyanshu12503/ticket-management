@@ -1,0 +1,83 @@
+# Maven
+target/
+*.jar
+*.war
+*.rar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+*.iml
+*.iws
+*.ipr
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Build
+.gradle/
+build/
+bin/
+out/
+.bin/
+
+# Spring Boot
+logs/
+!**/src/main/**/logs/
+!**/src/test/**/logs/
+
+# Test Coverage
+coverage/
+jacoco.exec
+.jacoco/
+
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+application-local.yml
+application-local.yaml
+
+# Temporary Files
+*.log
+*.log.*
+tmp/
+temp/
+
+# OS
+Thumbs.db
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Node (if frontend in same repo)
+node_modules/
+npm-debug.log
+yarn-error.log
+.npm
+.yarn
+
+# Package managers
+*.lock
+*.lockfile

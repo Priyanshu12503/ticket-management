@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Record Prompt When Task Completes",
+      "trigger": "PostTaskExec",
+      "description": "Automatically record task completions to .specstory/history/ with timestamp and task details",
+      "action": {
+        "type": "command",
+        "command": "powershell -Command \"\n$taskInfo = $input | ConvertFrom-Json\n$timestamp = Get-Date -Format 'yyyyMMdd-HHmmss'\n$fileName = '.specstory/history/prompt-{0}.md' -f $timestamp\n\n# Create the prompt record (simplified, can be enhanced)\n$content = @\\\"\n# Prompt: Task Completion\n\n**Date:** $(Get-Date -Format 'yyyy-MM-dd')\n**Time:** $(Get-Date -Format 'HH:mm:ss') UTC\n**Task:** $($taskInfo.taskName)\n**Status:** Completed\n\n## Task Summary\n$($taskInfo.description)\n\n## Files Referenced\n- Check git diff for actual changes\n\n## Next Steps\nContinue with remaining tasks or start implementation.\n\\\"@\n\n# Write to file if directory exists\nif (Test-Path '.specstory/history') {\n    Set-Content -Path $fileName -Value $content -Encoding UTF8\n    Write-Output \\\"Recorded prompt to $fileName\\\"\n}\n\"",
+        "timeout": 10
+      }
+    }
+  ]
+}
