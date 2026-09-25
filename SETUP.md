@@ -21,17 +21,33 @@ This is a complete full-stack support ticket management system with:
 
 ### 1. Backend Setup
 
+**Option A: Default H2 Database (Recommended for quick start)**
 ```bash
 cd /path/to/ticket-management-V2
 
-# Install dependencies and build
+# No configuration needed - uses H2 file database by default
 mvn clean install
+mvn spring-boot:run
+```
 
-# Run backend (dev mode with H2)
+**Option B: Custom Configuration**
+```bash
+cd /path/to/ticket-management-V2
+
+# Copy environment template
+cp .env.development .env
+
+# Edit .env if needed, then run
+mvn clean install  
 mvn spring-boot:run
 ```
 
 Backend will start on **http://localhost:8080**
+
+**Database Access:**
+- H2 Console: http://localhost:8080/h2-console
+- Connection URL: `jdbc:h2:file:./data/ticket_management`
+- Username: `sa`, Password: (leave blank)
 
 ### 2. Frontend Setup (in separate terminal)
 
@@ -48,6 +64,23 @@ npm start
 Frontend will open at **http://localhost:3000**
 
 ### Environment Configuration
+
+The application uses environment variables for configuration. See `ENVIRONMENT_SETUP.md` for detailed configuration options.
+
+**Quick Setup Options:**
+
+1. **Default (H2):** No configuration needed
+2. **Development:** `cp .env.development .env`  
+3. **Production:** `cp .env.production .env` and edit credentials
+
+**Key Environment Variables:**
+- `DB_URL` - Database connection URL
+- `DB_USERNAME` - Database username  
+- `DB_PASSWORD` - Database password
+- `JPA_DDL_AUTO` - Schema management (update/validate)
+- `H2_CONSOLE_ENABLED` - Enable H2 web console
+
+See `ENVIRONMENT_SETUP.md` for complete configuration guide.
 
 #### Backend Configuration
 
